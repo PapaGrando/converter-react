@@ -24,7 +24,7 @@ const Converter: React.FunctionComponent<IConverterData> = (props) => {
     .then((json) => {
 
       let jsonRates = json.rates;
-      jsonRates['RUB'] = 1; //Rub is base rate
+      jsonRates[json.base] = 1; //Rub is default base rate
 
       ratesRef.current = (jsonRates);
 
