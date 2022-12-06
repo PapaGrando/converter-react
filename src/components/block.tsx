@@ -3,20 +3,20 @@ import * as React from 'react';
 const defaultCurrencies = ['RUB', 'USD', 'EUR', 'KZT','CNY' ];
 
 interface IBlockProps {
-    value : number | string;
+    value : number | '';
     currency : string;
-    onChangeValue : any; 
-    onChangeCurrency : any;
+    onChangeValue :  React.Dispatch<any>; 
+    onChangeCurrency : React.Dispatch<any>;
 }
 
 const Block: React.FunctionComponent<Partial<IBlockProps>> = (props) => {
-    
-    //Add dropdown logic
+
+  //TODO : Add dropdown logic
     const [dropOpen, setOpen] = React.useState(false);
     const handleDropdown = () => {
       setOpen(!dropOpen);
     };
-  
+
     return (
     <div className="block">
     <ul className="currencies">
@@ -28,7 +28,6 @@ const Block: React.FunctionComponent<Partial<IBlockProps>> = (props) => {
           {cur}
         </li>
       ))}
-      
       <li className='dropdown'>
         <svg height="50px" viewBox="0 0 50 50" width="50px">
             <rect fill="none" height="50" width="50" />
@@ -38,10 +37,10 @@ const Block: React.FunctionComponent<Partial<IBlockProps>> = (props) => {
     </ul>
     <input
       onChange={(e) => props.onChangeValue(e.target.value)}
-      value={props.value == '' ? '' 
+      value= {props.value === '' ? '' 
         : Number(Number(props.value).toFixed(2))}
       type="number"
-      placeholder='0'
+      placeholder={props.currency}
     />
   </div>
   );
