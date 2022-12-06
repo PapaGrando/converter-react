@@ -37,7 +37,7 @@ const Block: React.FunctionComponent<Partial<IBlockProps>> = (props) => {
     </ul>
     <input
       onChange={(e) => props.onChangeValue(e.target.value)}
-      value= {props.value === '' ? '' 
+      value= {props.value === '' || props.value === 0 ? '' 
         : Number(Number(props.value).toFixed(2))}
       type="number"
       placeholder={props.currency}
